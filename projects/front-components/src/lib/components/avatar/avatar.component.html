@@ -1,0 +1,32 @@
+<div
+	class="avatar"
+	[class]="'size-' + size()"
+>
+	@if (!src() || showFallbackImage) {
+		@if (username()) {
+			<ss-lib-text
+				[type]="TextType.BodyMd"
+				[weight]="TextWeight.Semibold"
+				[color]="Colors.IconAction2"
+			>
+				{{ username() }}
+			</ss-lib-text>
+		} @else {
+			<ss-lib-icon
+				[icon]="IconType.User01"
+				[color]="Colors.IconAction2"
+				[width]="iconSize()"
+				[height]="iconSize()"
+			></ss-lib-icon>
+		}
+	} @else {
+		<img
+			class="avatar__image"
+			loading="lazy"
+			fill=""
+			alt="avatar"
+			[ngSrc]="src()"
+			(error)="onImageError()"
+		/>
+	}
+</div>

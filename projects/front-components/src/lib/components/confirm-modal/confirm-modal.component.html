@@ -1,0 +1,24 @@
+<div class="ss-lib-confirm-modal">
+	<ss-lib-dialog-header
+		[title]="titleHeader"
+		[description]="descriptionHeader"
+		[badge]="badgeProps"
+		(closeEvent)="close()"
+	/>
+
+	<div class="ss-lib-confirm-modal__actions">
+		<ss-lib-button
+			[size]="ExtraSize.xl"
+			[text]="cancelText"
+			[type]="ButtonType.Secondary"
+			(click)="close()"
+		/>
+
+		<ss-lib-button
+			*ngIf="apply"
+			[size]="ExtraSize.xl"
+			[text]="apply.text"
+			(click)="onApplyEvent()"
+		/>
+	</div>
+</div>

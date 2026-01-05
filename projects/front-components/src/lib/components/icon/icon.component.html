@@ -1,0 +1,12 @@
+@if (svg()) {
+	<div
+		class="icon"
+		[ngStyle]="{
+			'width.px': width(),
+			'height.px': height(),
+			strokeWidth: strokeWidth(),
+			color: internalColor() || color(),
+		}"
+		[innerHTML]="svg()"
+	></div>
+}

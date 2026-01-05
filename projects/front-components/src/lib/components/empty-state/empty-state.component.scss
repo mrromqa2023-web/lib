@@ -1,0 +1,31 @@
+@mixin flex-column {
+	display: flex;
+	flex-direction: column;
+}
+
+.ss-lib-empty-state {
+	@include flex-column;
+	text-align: center;
+	width: 100%;
+
+	&__body {
+		@include flex-column;
+		justify-content: center;
+		align-items: center;
+		gap: 24px;
+	}
+
+	&__content-body {
+		@include flex-column;
+		gap: 16px;
+		align-items: center;
+		text-align: center;
+	}
+
+	&__content-text {
+		@include flex-column;
+		gap: 4px;
+		align-items: center;
+		text-align: center;
+	}
+}

@@ -1,0 +1,61 @@
+:host {
+	display: flex;
+	gap: 8px;
+	align-items: center;
+	justify-content: flex-start;
+	cursor: pointer;
+	box-sizing: content-box;
+	border-radius: var(--border-radius-sm);
+	background: var(--surface-primary);
+	padding: 8px 10px;
+	margin: 0 6px 2px;
+
+	&:has(.selected) {
+		background: var(--surface-action-hover-3) !important;
+	}
+
+	&:hover:not(:has(.disabled)) {
+		background: var(--surface-action-hover-2);
+	}
+
+	&:active {
+		background: var(--surface-action-pressed-2) !important;
+	}
+
+	&:focus-visible {
+		outline: none;
+		background: var(--surface-action-hover-2);
+		box-shadow: var(--focus-rings-focus-ring);
+	}
+
+	&:has(.disabled) {
+		background: var(--surface-primary);
+		cursor: default;
+		pointer-events: none;
+	}
+}
+
+:host(:last-of-type) {
+	margin-bottom: 0;
+}
+
+.dropdown-item {
+	display: flex;
+	gap: 8px;
+	align-items: center;
+	justify-content: flex-start;
+	cursor: pointer;
+	width: 100%;
+}
+
+.dropdown-item__info {
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	gap: 8px;
+	width: 100%;
+}
+
+.dropdown-item.selected {
+	justify-content: space-between;
+}

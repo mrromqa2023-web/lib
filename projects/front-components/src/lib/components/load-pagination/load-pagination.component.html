@@ -1,0 +1,28 @@
+<div class="ss-lib-load-pagination">
+	<div class="ss-lib-load-pagination__button">
+		@if (canLoadMore) {
+			<ss-lib-button
+				[type]="ButtonType.Secondary"
+				[size]="ExtraSize.lg"
+				[text]="loadMoreText()"
+				[icon]="IconType.ArrowDown"
+				[iconPosition]="IconPosition.End"
+				(click)="updateOffset()"
+			></ss-lib-button>
+		}
+	</div>
+
+	<div class="ss-lib-load-pagination__block-progress">
+		<ss-lib-text
+			[color]="Colors.TextBody2"
+			[type]="TextType.BodyMd"
+		>
+			{{ itemCount() }} из {{ total() }}
+		</ss-lib-text>
+
+		<ss-lib-progress
+			[current]="itemCount()"
+			[total]="total()"
+		></ss-lib-progress>
+	</div>
+</div>

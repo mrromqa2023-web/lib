@@ -1,0 +1,32 @@
+<div class="calendar-year-grid">
+	<ss-lib-scrollbar>
+		@for (rowIndex of rows() | repeatTimes; track $index) {
+			<div
+				#yearRow
+				class="year-row"
+			>
+				@let year = getYear(rowIndex);
+
+				<div class="year-column">{{ year }}</div>
+
+				<div class="month-list">
+					@for (
+						monthShortName of monthsShort;
+						track $index;
+						let monthIndex = $index
+					) {
+						@let item = getMonth(monthIndex, year);
+
+						<ss-lib-calendar-cell
+							[displayValue]="monthShortName"
+							[item]="item"
+							[isActive]="itemIsActive(item)"
+							[isToday]="itemIsToday(item)"
+							(click)="onItemClick(item)"
+						/>
+					}
+				</div>
+			</div>
+		}
+	</ss-lib-scrollbar>
+</div>

@@ -1,0 +1,50 @@
+<div class="ss-lib-badge-card__wrapper">
+	<div class="ss-lib-badge-card ss-lib-badge-card--{{ orientation() }}">
+		<div class="ss-lib-badge-card__main">
+			@if (badge()) {
+				<ss-lib-badge [badgeProps]="badge()!" />
+			}
+
+			<div class="ss-lib-badge-card__content">
+				<div class="ss-lib-badge-card__text">
+					<ss-lib-text
+						[type]="TextType.BodyLg"
+						[weight]="TextWeight.Semibold"
+						[align]="textAlign()"
+					>
+						{{ title() }}
+					</ss-lib-text>
+
+					<ss-lib-text
+						[color]="Colors.TextBody3"
+						[type]="TextType.BodySm"
+						[weight]="TextWeight.Regular"
+						[align]="textAlign()"
+					>
+						{{ description() }}
+					</ss-lib-text>
+				</div>
+
+				<div class="ss-lib-badge-card__tags">
+					@for (tag of tags(); track tag) {
+						<ss-lib-tag
+							[type]="tag.type"
+							[text]="tag.text"
+							[colorConfig]="tag.colorConfig!"
+						/>
+					}
+				</div>
+			</div>
+		</div>
+
+		@if (viewClose()) {
+			<ss-lib-close-button
+				class="ss-lib-badge-card__close"
+				[icon]="IconType.Close"
+				[size]="ExtraSize.xl"
+				[type]="ButtonType.CloseLight"
+				(click)="closeEvent.emit()"
+			></ss-lib-close-button>
+		}
+	</div>
+</div>

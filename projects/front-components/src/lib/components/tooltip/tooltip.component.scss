@@ -1,0 +1,142 @@
+$horizontalTooltipOffset: 20px;
+$verticalTooltipOffset: 10px;
+$verticalArrowOffset: 8px;
+
+.tooltip {
+	position: fixed;
+	max-width: 260px;
+	z-index: 2000;
+	border-radius: var(--border-radius-md);
+	padding: 8px 12px;
+	opacity: 0;
+	background: var(--surface-tertiary);
+	box-shadow:
+		0 2px 2px -1px #0a0d120a,
+		0 4px 6px -2px #0a0d1208,
+		0 12px 16px -4px #0a0d1214;
+
+	outline: 1px solid var(--border-tertiary);
+	will-change: opacity;
+	pointer-events: none;
+
+	//TODO: заменить цвета на токены --surface-tertiary и --border-tertiary в svg
+	&::before {
+		content: '';
+		position: absolute;
+		width: 16px;
+		height: 18px;
+		background-image: url("data:image/svg+xml;utf8,\
+		<svg width='16' height='18' viewBox='0 0 16 18' fill='none' xmlns='http://www.w3.org/2000/svg'>\
+		<path d='M8.01476 2.92883C8.01468 2.4835 7.47623 2.26048 7.16126 2.57528L1.09008 8.64645C0.894821 8.84171 0.894821 9.15829 1.09008 9.35355L7.16126 15.4247C7.47624 15.7395 8.01468 15.5165 8.01476 15.0712L8.01476 2.92883Z' fill='%231F1F1E' stroke='%23353534'/>\
+		<path d='M6.99998 0.5L15.5 9.00001L6.99999 17.5L6.99998 0.5Z' fill='%231F1F1E'/>\
+		</svg>");
+		background-repeat: no-repeat;
+		background-size: contain;
+		background-position: center;
+	}
+
+	//
+
+	&::before svg path {
+		fill: red !important;
+		stroke: var(--border-tertiary);
+	}
+
+	&--visible {
+		opacity: 1;
+	}
+
+	&--bottom {
+		transform: translate(-50%, $verticalTooltipOffset);
+
+		&::before {
+			left: calc(50% - 8px);
+			top: calc(-1 * $verticalArrowOffset);
+			transform: rotate(90deg);
+		}
+	}
+
+	&--bottom-right {
+		transform: translate(
+			calc(-100% + $horizontalTooltipOffset),
+			$verticalTooltipOffset
+		);
+
+		&::before {
+			left: calc(100% - 28px);
+			top: calc(-1 * $verticalArrowOffset);
+			transform: rotate(90deg);
+		}
+	}
+
+	&--bottom-left {
+		transform: translate(
+			calc(-1 * $horizontalTooltipOffset - 1px),
+			$verticalTooltipOffset
+		);
+
+		&::before {
+			left: 13px;
+			top: calc(-1 * $verticalArrowOffset);
+			transform: rotate(90deg);
+		}
+	}
+
+	&--top {
+		transform: translate(-50%, calc(-100% - $verticalTooltipOffset));
+
+		&::before {
+			left: calc(50% - 8px);
+			bottom: calc(-1 * $verticalArrowOffset);
+			transform: rotate(-90deg);
+		}
+	}
+
+	&--top-right {
+		transform: translate(
+			calc(-100% + $horizontalTooltipOffset),
+			calc(-100% - $verticalTooltipOffset)
+		);
+
+		&::before {
+			left: calc(100% - 28px);
+			bottom: calc(-1 * $verticalArrowOffset);
+			transform: rotate(-90deg);
+		}
+	}
+
+	&--top-left {
+		transform: translate(
+			calc(-1 * $horizontalTooltipOffset - 1px),
+			calc(-100% - $verticalTooltipOffset)
+		);
+
+		&::before {
+			left: 13px;
+			bottom: calc(-1 * $verticalArrowOffset);
+			transform: rotate(-90deg);
+		}
+	}
+
+	&--left {
+		transform: translate(calc(-100% - $verticalTooltipOffset), -50%);
+
+		&::before {
+			right: calc(-1 * 7px);
+			top: calc(50% - $verticalArrowOffset - 1px);
+			transform: rotate(-180deg);
+		}
+	}
+
+	&--right {
+		transform: translate($verticalTooltipOffset, -50%);
+
+		&::before {
+			border-top-color: transparent;
+			border-bottom-color: transparent;
+			border-left: none;
+			left: calc(-1 * 7px);
+			top: calc(50% - $verticalArrowOffset - 1px);
+		}
+	}
+}

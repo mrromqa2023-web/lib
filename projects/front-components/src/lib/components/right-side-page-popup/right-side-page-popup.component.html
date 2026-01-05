@@ -1,0 +1,34 @@
+<div class="ss-lib-right-side-page-popup">
+	<div class="ss-lib-right-side-page-popup__header">
+		<ss-lib-dialog-header
+			[title]="titleHeader()"
+			[description]="descriptionHeader()"
+			[badge]="badgeProps()"
+			[tags]="tags()"
+			(closeEvent)="onCloseEvent()"
+		></ss-lib-dialog-header>
+	</div>
+	<ss-lib-divider
+		*ngIf="contentRef()"
+		class="ss-lib-right-side-page-popup__divider-top"
+	></ss-lib-divider>
+	<div
+		*ngIf="contentRef()"
+		class="ss-lib-right-side-page-popup__body"
+	>
+		<ng-container *ngTemplateOutlet="contentRef()"></ng-container>
+	</div>
+	<div
+		*ngIf="actionsRef()"
+		class="ss-lib-right-side-page-popup__footer"
+	>
+		<ss-lib-divider></ss-lib-divider>
+		<div
+			*ngIf="actionsRef()"
+			class="ss-lib-right-side-page-popup__actions"
+			[class.ss-lib-modal__footer-add-padding]="!contentRef()"
+		>
+			<ng-container *ngTemplateOutlet="actionsRef()"></ng-container>
+		</div>
+	</div>
+</div>

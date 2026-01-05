@@ -1,0 +1,8 @@
+# Общие игнорируемые директории
+node_modules
+dist
+coverage
+.husky
+
+# Специфичные для проекта
+*.spec.ts

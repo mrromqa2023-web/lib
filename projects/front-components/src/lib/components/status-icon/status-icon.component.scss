@@ -1,0 +1,11 @@
+:host {
+	display: flex;
+	align-items: center;
+	max-width: fit-content;
+}
+
+.status-icon:focus-visible {
+	outline: none;
+	box-shadow: var(--focus-rings-focus-ring);
+	border-radius: 4px;
+}

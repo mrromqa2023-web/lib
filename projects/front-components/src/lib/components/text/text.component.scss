@@ -1,0 +1,35 @@
+p.white-space-nowrap {
+	white-space: nowrap;
+}
+
+p.ellipsis {
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+p.line-clamp:not(.ellipsis) {
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+}
+
+p.underline {
+	text-decoration: underline;
+}
+
+p.regular {
+	font-weight: 400;
+}
+
+p.medium {
+	font-weight: 500;
+}
+
+p.semibold {
+	font-weight: 600;
+}
+
+p.bold {
+	font-weight: 700;
+}

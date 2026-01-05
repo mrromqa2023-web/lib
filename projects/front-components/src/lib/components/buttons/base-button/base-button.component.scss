@@ -1,0 +1,32 @@
+:host {
+	display: flex;
+	align-items: center;
+	min-width: fit-content
+}
+
+button.custom-button {
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border: none;
+	cursor: pointer;
+	box-sizing: border-box;
+	-webkit-transition: background-color 100ms linear;
+	-ms-transition: background-color 100ms linear;
+	transition: background-color 100ms linear;
+}
+
+button.custom-button:not(.only-icon) {
+	flex-grow: 1;
+	flex-shrink: 0 !important;
+}
+
+button.custom-button:not(.justify-center) {
+	justify-content: space-between;
+}
+
+button.custom-button:disabled {
+	cursor: default;
+	pointer-events: none;
+}

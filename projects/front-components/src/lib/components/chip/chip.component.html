@@ -1,0 +1,29 @@
+<div
+	class="chip"
+	[class.chip--disabled]="disabled()"
+>
+	<ss-lib-text
+		class="chip__label"
+		[type]="TextType.BodySm"
+		[weight]="TextWeight.Medium"
+		[color]="Colors.TextBody2"
+	>
+		{{ label() }}
+	</ss-lib-text>
+
+	@if (removable() && !disabled()) {
+		<button
+			type="button"
+			class="chip__remove"
+			[attr.aria-label]="'Удалить ' + label()"
+			(click)="onRemove($event)"
+		>
+			<ss-lib-icon
+				[icon]="IconType.Close"
+				[width]="'16'"
+				[height]="'16'"
+				[color]="Colors.IconBody2"
+			></ss-lib-icon>
+		</button>
+	}
+</div>

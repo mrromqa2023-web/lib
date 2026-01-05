@@ -1,0 +1,49 @@
+<div
+	class="ss-lib-tabs"
+	[style.height.px]="height()"
+>
+	<div
+		#tabsBlock
+		class="ss-lib-tabs__block"
+	>
+		<div class="ss-lib-tabs__tabs">
+			@if (showFullList()) {
+				@for (tab of tabs(); track tab) {
+					<ss-lib-tab
+						#tabItem
+						[active]="$index === activeTabIndex()"
+						[text]="tab.text"
+						[icon]="tab.icon"
+						[tag]="tab.tag"
+						[disabled]="tab.isDisabled"
+						[viewChevron]="false"
+						[listTabsElem]="listTabs"
+						(click)="!tab.isDisabled && onTabChange($index)"
+					></ss-lib-tab>
+				}
+			}
+
+			@if (!showFullList()) {
+				<ss-lib-tab
+					[active]="true"
+					[text]="getActiveTab.text"
+					[icon]="getActiveTab.icon"
+					[tag]="getActiveTab.tag"
+					[disabled]="getActiveTab.isDisabled"
+					[viewChevron]="true"
+					[listTabsElem]="listTabs"
+				></ss-lib-tab>
+			}
+		</div>
+	</div>
+</div>
+
+<ss-lib-dropdown-list #listTabs>
+	@for (tab of tabs(); track tab) {
+		<ss-lib-dropdown-item
+			[label]="tab.text"
+			[isDisabled]="tab.isDisabled"
+			(click)="onTabChange($index)"
+		/>
+	}
+</ss-lib-dropdown-list>

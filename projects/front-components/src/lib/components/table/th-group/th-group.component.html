@@ -1,0 +1,8 @@
+<ng-content />
+@for (key of table.columns(); track key) {
+	<ng-container
+		*ngIf="headByKey()[key]"
+		[ngTemplateOutlet]="headByKey()[key].template"
+		[ngTemplateOutletContext]="{ $implicit: key }"
+	/>
+}

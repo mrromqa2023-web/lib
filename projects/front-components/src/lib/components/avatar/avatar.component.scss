@@ -1,0 +1,34 @@
+:host {
+	display: flex;
+	align-items: center;
+	max-width: fit-content;
+}
+
+.avatar {
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border: 1px solid var(--app-avatar-border, var(--border-primary));
+	background: var(--surface-primary);
+	border-radius: var(--border-radius-round);
+	overflow: hidden;
+	box-sizing: border-box;
+
+	&.size-xs {
+		width: 24px;
+		height: 24px;
+	}
+
+	&.size-md {
+		width: 40px;
+		height: 40px;
+	}
+
+	&__image {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		object-position: center;
+	}
+}

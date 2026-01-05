@@ -1,0 +1,60 @@
+:host {
+	height: 82px;
+	border-top: none;
+	border-right: 1px solid var(--border-primary);
+	border-bottom: 1px solid var(--border-primary);
+	border-left: none;
+
+	&:first-child {
+		border-left: 1px solid var(--border-primary);
+	}
+
+	&.hover {
+		background-color: var(--surface-action-hover-3) !important;
+	}
+}
+
+/* скрываем вертикальные разделители, если отключены бордеры */
+:host-context(table[ssTable]:not(.show-cell-borders)) {
+	:host:not(:last-child) {
+		border-right: none;
+	}
+}
+
+/* скругление для последней строки */
+:host-context(table[ssTable].has-border-radius) {
+	tbody tr:last-child {
+		:host:first-child {
+			border-bottom-left-radius: var(--border-radius-md);
+		}
+
+		:host:last-child {
+			border-bottom-right-radius: var(--border-radius-md);
+		}
+	}
+}
+
+/*  drag состояния */
+:host-context(tr.dragging),
+:host-context(tr.drag-over) {
+	:host {
+		border-color: transparent;
+
+		&:first-child {
+			border-left-color: var(--border-primary);
+		}
+
+		&:last-child {
+			border-right-color: var(--border-primary);
+		}
+
+		border-bottom-color: var(--border-primary);
+	}
+}
+
+/* нижний бордер у последней строки */
+:host-context(tr:last-child) {
+	:host {
+		border-bottom-color: var(--border-primary);
+	}
+}

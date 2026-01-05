@@ -1,0 +1,97 @@
+@switch (state()) {
+	@case (States.Empty) {
+		<div
+			class="image-upload"
+			[class.image-upload__hover]="hover()"
+			[class.image-upload__disabled]="disabled()"
+			(dragenter)="onDragEnter($event)"
+			(dragleave)="onDragLeave($event)"
+			(drop)="onDropSuccess($event)"
+			(dragover)="$event.preventDefault()"
+		>
+			<ss-lib-badge
+				[badgeProps]="{ icon: IconType.ImagePlus, size: ExtraSize.lg }"
+			/>
+
+			<div class="image-upload__info">
+				<ss-lib-text
+					[type]="TextType.BodySm"
+					[color]="Colors.TextBody2"
+				>
+					Добавьте или перетащите изображение
+				</ss-lib-text>
+
+				<ss-lib-text
+					[type]="TextType.BodyXs"
+					[color]="Colors.TextBody3"
+				>
+					{{ maxResolutionText() }}
+				</ss-lib-text>
+			</div>
+
+			<label
+				#hiddenInput
+				class="image-upload__button"
+				for="file-upload"
+			>
+				<input
+					#fileInput
+					id="file-upload"
+					accept="image/jpeg,image/gif,image/png"
+					class="image-upload__button__hidden-input"
+					type="file"
+					aria-label="Загрузить с устройства"
+					[disabled]="disabled()"
+					(change)="onFileSelect(fileInput.files)"
+				/>
+
+				<ss-lib-button
+					[type]="ButtonType.Primary"
+					[text]="'Загрузить с устройства'"
+					[icon]="IconType.Upload"
+					[size]="ExtraSize.md"
+					[disabled]="disabled()"
+					(click)="hiddenInput.click()"
+				></ss-lib-button>
+			</label>
+		</div>
+	}
+	@case (States.Preview) {
+		<div
+			class="image-preview"
+			role="img"
+			aria-label="Image preview"
+			[style.background-image]="backgroundImg() | safe: 'html'"
+		>
+			<ss-lib-preview-button
+				class="image-preview__close"
+				aria-label="Remove image"
+				(click)="onFileDelete()"
+			/>
+
+			<img
+				alt="Uploaded image preview"
+				[src]="imageSrc()"
+			/>
+		</div>
+	}
+	@case (States.Loading) {
+		<div
+			class="image-loading"
+			role="region"
+			aria-label="Image upload in progress"
+		>
+			<ss-lib-progress-circle
+				class="image-loading__loader"
+				aria-label="Upload progress"
+				[progress]="animProgress()"
+			/>
+
+			<ss-lib-preview-button
+				class="image-loading__cancel"
+				aria-label="Cancel upload"
+				(click)="onFileDelete()"
+			/>
+		</div>
+	}
+}

@@ -1,0 +1,29 @@
+<div class="ss-lib-empty-state">
+	<div class="ss-lib-empty-state__body">
+		<div class="ss-lib-empty-state__content-body">
+			<ss-lib-badge [badgeProps]="badge()" />
+
+			<div class="ss-lib-empty-state__content-text">
+				<ss-lib-text
+					[type]="TextType.BodyXl"
+					[weight]="TextWeight.Semibold"
+					[align]="Align.Center"
+					[color]="Colors.TextBody"
+					>{{ title() }}
+				</ss-lib-text>
+
+				@if (description()) {
+					<ss-lib-text
+						[type]="TextType.BodyMd"
+						[weight]="TextWeight.Regular"
+						[align]="Align.Center"
+						[color]="Colors.TextBody3"
+						>{{ description() }}
+					</ss-lib-text>
+				}
+			</div>
+		</div>
+
+		<ng-content></ng-content>
+	</div>
+</div>

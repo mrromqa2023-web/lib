@@ -1,0 +1,51 @@
+<div class="multiselect__container">
+	<div class="multiselect__body">
+		<div class="multiselect__field">
+			<!-- Базовый input для placeholder и readonly режима -->
+			@if (selectedItems().length === 0) {
+				<ss-lib-input
+					class="multiselect__input"
+					[formControl]="selectCtrl"
+					[placeholder]="placeholder()"
+					[readOnly]="true"
+				/>
+			}
+
+			<!-- Контейнер с выбранными элементами -->
+			@if (selectedItems().length > 0) {
+				<div class="multiselect__chips">
+					@for (item of visibleItems(); track item.id) {
+						<ss-lib-chip
+							[label]="item.name"
+							(remove)="removeItem(item)"
+						></ss-lib-chip>
+					}
+
+					<!-- Счетчик скрытых элементов -->
+					@if (hiddenItemsCount() > 0 && showCounter()) {
+						<div class="multiselect__counter">
+							+{{ hiddenItemsCount() }}
+						</div>
+					}
+
+					<!-- Кнопка очистки всех -->
+					<button
+						type="button"
+						class="multiselect__clear-all"
+						[attr.aria-label]="'Очистить все'"
+						(click)="clearAll($event)"
+					>
+						<ss-lib-icon
+							[icon]="IconType.Close"
+							[width]="'20'"
+							[height]="'20'"
+							[color]="Colors.IconBody2"
+						></ss-lib-icon>
+					</button>
+				</div>
+			}
+		</div>
+
+		<ng-content></ng-content>
+	</div>
+</div>

@@ -1,0 +1,132 @@
+<ss-lib-right-side-page-popup
+	[titleHeader]="'Какой то title'"
+	[descriptionHeader]="'Какой то description'"
+	[actionsRef]="modalRef.data.isFooter ? actions : null"
+	[contentRef]="contentRef"
+	[tags]="[
+		{
+			type: TagType.Default,
+			text: 'Заказ/контракт',
+		},
+		{
+			type: TagType.Default,
+			text: 'Заказ/контракт',
+		},
+	]"
+	(closeEmit)="close()"
+>
+</ss-lib-right-side-page-popup>
+
+<ng-template #actions>
+	<ss-lib-button [text]="'Кнопка 1'"></ss-lib-button>
+</ng-template>
+<ng-template #contentRef>
+	<ss-lib-form-field
+		[label]="'Название'"
+		[hint]="'Подсказка'"
+		[errorText]="'Неверно заполнено'"
+		[showValidationFieldIcon]="true"
+	>
+		<ss-lib-input
+			fieldCtrl
+			[formControl]="inputCtrl"
+			[placeholder]="'oleg@mail.ru'"
+		/>
+	</ss-lib-form-field>
+	<ss-lib-form-field
+		[label]="'Название'"
+		[hint]="'Подсказка'"
+		[errorText]="'Неверно заполнено'"
+		[showValidationFieldIcon]="true"
+	>
+		<ss-lib-input
+			fieldCtrl
+			[formControl]="inputCtrl"
+			[placeholder]="'oleg@mail.ru'"
+		/>
+	</ss-lib-form-field>
+	<ss-lib-form-field
+		[label]="'Название'"
+		[hint]="'Подсказка'"
+		[errorText]="'Неверно заполнено'"
+		[showValidationFieldIcon]="true"
+	>
+		<ss-lib-input
+			fieldCtrl
+			[formControl]="inputCtrl"
+			[placeholder]="'oleg@mail.ru'"
+		/>
+	</ss-lib-form-field>
+	<ss-lib-form-field
+		[label]="'Название'"
+		[hint]="'Подсказка'"
+		[errorText]="'Неверно заполнено'"
+		[showValidationFieldIcon]="true"
+	>
+		<ss-lib-input
+			fieldCtrl
+			[formControl]="inputCtrl"
+			[placeholder]="'oleg@mail.ru'"
+		/>
+	</ss-lib-form-field>
+	<ss-lib-form-field
+		[label]="'Название'"
+		[hint]="'Подсказка'"
+		[errorText]="'Неверно заполнено'"
+		[showValidationFieldIcon]="true"
+	>
+		<ss-lib-input
+			fieldCtrl
+			[formControl]="inputCtrl"
+			[placeholder]="'oleg@mail.ru'"
+		/>
+	</ss-lib-form-field>
+	<ss-lib-form-field
+		[label]="'Название'"
+		[hint]="'Подсказка'"
+		[errorText]="'Неверно заполнено'"
+		[showValidationFieldIcon]="true"
+	>
+		<ss-lib-input
+			fieldCtrl
+			[formControl]="inputCtrl"
+			[placeholder]="'oleg@mail.ru'"
+		/>
+	</ss-lib-form-field>
+	<ss-lib-form-field
+		[label]="'Название'"
+		[hint]="'Подсказка'"
+		[errorText]="'Неверно заполнено'"
+		[showValidationFieldIcon]="true"
+	>
+		<ss-lib-input
+			fieldCtrl
+			[formControl]="inputCtrl"
+			[placeholder]="'oleg@mail.ru'"
+		/>
+	</ss-lib-form-field>
+	<ss-lib-form-field
+		[label]="'Название'"
+		[hint]="'Подсказка'"
+		[errorText]="'Неверно заполнено'"
+		[showValidationFieldIcon]="true"
+	>
+		<ss-lib-input
+			fieldCtrl
+			[formControl]="inputCtrl"
+			[placeholder]="'oleg@mail.ru'"
+		/>
+	</ss-lib-form-field>
+	<ss-lib-form-field
+		[label]="'Название'"
+		[hint]="'Подсказка'"
+		[errorText]="'Неверно заполнено'"
+		[showValidationFieldIcon]="true"
+	>
+		<ss-lib-input
+			fieldCtrl
+			[formControl]="inputCtrl"
+			[placeholder]="'oleg@mail.ru'"
+		/>
+	</ss-lib-form-field>
+</ng-template>

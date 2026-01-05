@@ -1,0 +1,317 @@
+button.custom-button {
+	border-radius: var(
+			--app-custom-button-border-radius-top-left,
+			var(--border-radius-md)
+		)
+		var(
+			--app-custom-button-border-radius-top-right,
+			var(--border-radius-md)
+		)
+		var(
+			--app-custom-button-border-radius-bottom-right,
+			var(--border-radius-md)
+		)
+		var(
+			--app-custom-button-border-radius-bottom-left,
+			var(--border-radius-md)
+		);
+}
+
+// *************** SIZES ***************
+
+// NOT ONLY ICONS
+button.custom-button.type-text-primary:not(.only-icon),
+button.custom-button.type-text-secondary:not(.only-icon) {
+	border-radius: 0;
+
+	&.size-sm {
+		gap: 4px;
+	}
+}
+
+button.custom-button.type-primary,
+button.custom-button.type-secondary,
+button.custom-button.type-ghost,
+button.custom-button.type-text-primary,
+button.custom-button.type-text-secondary
+{
+	.custom-button__text {
+		padding: 0 2px;
+	}
+}
+
+button.custom-button.type-primary:not(.only-icon),
+button.custom-button.type-secondary:not(.only-icon),
+button.custom-button.type-ghost:not(.only-icon) {
+	&.size-xxs {
+		padding: 2px 6px;
+		border-radius: var(
+				--app-custom-button-border-radius-top-left,
+				var(--border-radius-xs)
+			)
+			var(
+				--app-custom-button-border-radius-top-right,
+				var(--border-radius-xs)
+			)
+			var(
+				--app-custom-button-border-radius-bottom-right,
+				var(--border-radius-xs)
+			)
+			var(
+				--app-custom-button-border-radius-bottom-left,
+				var(--border-radius-xs)
+			);
+	}
+
+	&.size-xs {
+		padding: 4px 8px;
+		gap: 2px;
+		border-radius: var(
+				--app-custom-button-border-radius-top-left,
+				var(--border-radius-xs)
+			)
+			var(
+				--app-custom-button-border-radius-top-right,
+				var(--border-radius-xs)
+			)
+			var(
+				--app-custom-button-border-radius-bottom-right,
+				var(--border-radius-xs)
+			)
+			var(
+				--app-custom-button-border-radius-bottom-left,
+				var(--border-radius-xs)
+			);
+	}
+
+	&.size-sm {
+		padding: 6px 10px;
+		gap: 2px;
+
+		border-radius: var(
+				--app-custom-button-border-radius-top-left,
+				var(--border-radius-sm)
+			)
+			var(
+				--app-custom-button-border-radius-top-right,
+				var(--border-radius-sm)
+			)
+			var(
+				--app-custom-button-border-radius-bottom-right,
+				var(--border-radius-sm)
+			)
+			var(
+				--app-custom-button-border-radius-bottom-left,
+				var(--border-radius-sm)
+			);
+	}
+
+	&.size-md {
+		padding: 8px 12px;
+		gap: 4px;
+	}
+
+	&.size-lg {
+		padding: 10px 14px;
+		gap: 4px;
+	}
+
+	&.size-xl,
+	&.size-xxl {
+		padding: 10px 16px;
+		gap: 6px;
+	}
+}
+
+// ONLY ICONS
+button.custom-button.type-primary.only-icon,
+button.custom-button.type-secondary.only-icon,
+button.custom-button.type-ghost.only-icon,
+button.custom-button.type-text.only-icon {
+	&.size-xxs {
+		padding: 4px;
+		border-radius: var(
+				--app-custom-button-border-radius-top-left,
+				var(--border-radius-xs)
+			)
+			var(
+				--app-custom-button-border-radius-top-right,
+				var(--border-radius-xs)
+			)
+			var(
+				--app-custom-button-border-radius-bottom-right,
+				var(--border-radius-xs)
+			)
+			var(
+				--app-custom-button-border-radius-bottom-left,
+				var(--border-radius-xs)
+			);
+	}
+
+	&.size-xs {
+		padding: 6px;
+
+		border-radius: var(
+				--app-custom-button-border-radius-top-left,
+				var(--border-radius-xs)
+			)
+			var(
+				--app-custom-button-border-radius-top-right,
+				var(--border-radius-xs)
+			)
+			var(
+				--app-custom-button-border-radius-bottom-right,
+				var(--border-radius-xs)
+			)
+			var(
+				--app-custom-button-border-radius-bottom-left,
+				var(--border-radius-xs)
+			);
+	}
+
+	&.size-sm {
+		padding: 6px;
+	}
+
+	&.size-md {
+		padding: 8px;
+	}
+
+	&.size-lg {
+		padding: 10px;
+	}
+
+	&.size-xl,
+	&.size-xxl {
+		padding: 12px;
+	}
+}
+
+// *************** PRIMARY ***************
+button.custom-button.type-primary {
+	background-color: var(--surface-action);
+	box-shadow: var(--shadow-xs-skeumorphic);
+	box-sizing: border-box;
+}
+
+button.custom-button.type-primary:not(:disabled)::before {
+	content: '';
+	position: absolute;
+	inset: 0;
+	border-radius: inherit;
+	padding: 2px;
+	background: var(--gradient-skeumorphic-gradient-border);
+	mask:
+		linear-gradient(#fff 0 0) content-box,
+		linear-gradient(#fff 0 0);
+	-webkit-mask-composite: xor;
+	mask-composite: exclude;
+}
+
+button.custom-button:hover.type-primary {
+	background-color: var(--surface-action-hover);
+}
+
+button.custom-button:active.type-primary {
+	background-color: var(--surface-action-pressed);
+	box-shadow: none;
+}
+
+button.custom-button:focus-visible.type-primary {
+	outline: none;
+	background-color: var(--surface-action);
+	box-shadow: var(--focus-rings-focus-ring-shadow-xs-skeumorphic);
+}
+
+button.custom-button:disabled.type-primary {
+	background-color: var(--surface-disabled);
+	outline: 1px solid var(--border-disabled) !important;
+	outline-offset: -1px;
+	box-shadow: var(--shadow-xs) !important;
+}
+
+// *************** SECONDARY ***************
+button.custom-button.type-secondary {
+	background: var(--surface-primary);
+	box-shadow: var(
+		--app-border-shadow-secondary-btn,
+		var(--shadow-xs-skeumorphic2)
+	);
+	outline: 1px solid var(--border-secondary) !important;
+	outline-offset: -1px;
+}
+
+button.custom-button:hover.type-secondary {
+	background: var(--surface-action-hover-2);
+}
+
+button.custom-button:active.type-secondary {
+	background: var(--surface-action-pressed-2) !important;
+	box-shadow: var(--app-border-shadow-secondary-btn-active, none);
+}
+
+button.custom-button:focus-visible.type-secondary {
+	outline: none;
+	background: var(--surface-primary);
+	box-shadow: var(--focus-rings-focus-ring-shadow-xs-skeumorphic) !important;
+}
+
+button.custom-button:disabled.type-secondary {
+	background-color: var(--surface-disabled);
+	outline: 1px solid var(--border-disabled);
+	outline-offset: -1px;
+	box-shadow: var(--shadow-xs) !important;
+}
+
+// *************** GHOST ***************
+button.custom-button.type-ghost {
+	background: transparent;
+}
+
+button.custom-button:hover.type-ghost {
+	background: var(--surface-action-hover-2);
+}
+
+button.custom-button:active.type-ghost {
+	background: var(--surface-action-pressed-2) !important;
+}
+
+button.custom-button:focus-visible.type-ghost {
+	outline: none;
+	box-shadow: var(--focus-rings-focus-ring);
+}
+
+// *************** TEXT ***************
+button.custom-button.type-text-primary,
+button.custom-button:hover.type-text-primary,
+button.custom-button:active.type-text-primary,
+button.custom-button:focus-visible.type-text-primary,
+button.custom-button.type-text-secondary,
+button.custom-button:hover.type-text-secondary,
+button.custom-button:active.type-text-secondary,
+button.custom-button:focus-visible.type-text-secondary {
+	background-color: transparent;
+}
+
+button.custom-button:focus-visible.type-text-primary,
+button.custom-button:focus-visible.type-text-secondary {
+	outline: none;
+	background-color: var(--surface-primary);
+	box-shadow: var(--focus-rings-focus-ring) !important;
+	border-radius: var(
+			--app-custom-button-border-radius-top-left,
+			var(--border-radius-xs)
+		)
+		var(
+			--app-custom-button-border-radius-top-right,
+			var(--border-radius-xs)
+		)
+		var(
+			--app-custom-button-border-radius-bottom-right,
+			var(--border-radius-xs)
+		)
+		var(
+			--app-custom-button-border-radius-bottom-left,
+			var(--border-radius-xs)
+		);
+}

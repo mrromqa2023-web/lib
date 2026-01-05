@@ -1,0 +1,85 @@
+.multiselect {
+	&__container {
+		position: relative;
+		cursor: pointer;
+	}
+
+	&__body {
+		position: relative;
+	}
+
+	&__field {
+		position: relative;
+		display: flex;
+		align-items: center;
+	}
+
+	&__input {
+		flex-grow: 1;
+		pointer-events: none;
+		width: 100%;
+	}
+
+	&__chips {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 8px;
+		padding: 6px;
+		position: relative;
+		z-index: 1;
+		width: 100%;
+		border-radius: 8px;
+		align-items: center;
+
+		&:hover {
+			border-color: var(--border-action-hover);
+		}
+
+		&:focus-within {
+			border-color: var(--border-action);
+			box-shadow: 0 0 0 3px var(--border-action-shadow);
+		}
+	}
+
+	&__counter {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		padding: 4px 8px;
+		background: var(--background-body-2);
+		border: 1px solid var(--border-primary);
+		border-radius: 6px;
+		font-size: 14px;
+		line-height: 20px;
+		color: var(--text-body-2);
+		font-weight: 500;
+	}
+
+	&__clear-all {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		padding: 0;
+		border: none;
+		background: transparent;
+		cursor: pointer;
+		border-radius: 4px;
+		width: 24px;
+		height: 24px;
+		margin-left: auto;
+		flex-shrink: 0;
+
+		&:hover {
+			background: var(--background-action-hover-2);
+		}
+
+		&:active {
+			background: var(--background-action-pressed-2);
+		}
+
+		&:focus-visible {
+			outline: 2px solid var(--border-action);
+			outline-offset: 1px;
+		}
+	}
+}

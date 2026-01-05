@@ -1,0 +1,49 @@
+<div
+	class="checkbox"
+	[attr.tabindex]="isDisabled() ? null : 0"
+	[class.checkbox--active]="checked() || indeterminate()"
+	[class.checkbox--disabled]="isDisabled()"
+	[class.checkbox--error]="isError()"
+	[class.checkbox--with-label]="hasLabel()"
+	(click)="toggleCheckbox()"
+>
+	@if (checked() || indeterminate()) {
+		<ss-lib-icon
+			[color]="iconColorComputed()"
+			[height]="'12'"
+			[width]="'12'"
+			[strokeWidth]="
+				customScaleStroke | mapper: calcStrokeWidth : scaleSvg
+			"
+			[icon]="iconComputed()"
+		></ss-lib-icon>
+	}
+</div>
+
+@if (hasLabel()) {
+	<div class="checkbox__texts">
+		@if (label()) {
+			<ss-lib-text
+				class="checkbox__texts_label"
+				[class.checkbox__texts_disabled]="isDisabled()"
+				[type]="TextType.BodySm"
+				[weight]="TextWeight.Medium"
+				[color]="Colors.TextBody2"
+				(click)="toggleCheckbox()"
+			>
+				{{ label() }}
+			</ss-lib-text>
+		}
+
+		@if (description()) {
+			<ss-lib-text
+				class="checkbox__texts_description"
+				[type]="TextType.BodySm"
+				[weight]="TextWeight.Regular"
+				[color]="Colors.TextBody3"
+			>
+				{{ description() }}
+			</ss-lib-text>
+		}
+	</div>
+}

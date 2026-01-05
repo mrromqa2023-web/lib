@@ -1,0 +1,182 @@
+import {
+	ChangeDetectionStrategy,
+	Component,
+	computed,
+	contentChildren,
+	effect,
+	ElementRef,
+	HostListener,
+	inject,
+	input,
+	output,
+	signal,
+	TemplateRef,
+	viewChild,
+} from '@angular/core';
+import { NgTemplateOutlet } from '@angular/common';
+import { IconComponent } from '../../icon/icon.component';
+import { TextComponent } from '../../text/text.component';
+import {
+	Colors,
+	StateTypes,
+	TextType,
+	TextWeight,
+	IconType,
+	IDictionaryItemDto,
+} from '../../../shared/models';
+
+interface IColorsConfig {
+	text: Colors;
+	icon: Colors;
+}
+
+/**
+ * Компонент элемента выпадающего списка с поддержкой иконок и состояний
+ *
+ * @example
+ * ```html
+ * Параметры:
+ *
+ * [label]: string - Текст элемента списка - необязательный,
+ * по умолчанию: ''
+ *
+ * [value]: T | string | null - Значение элемента - необязательный,
+ * по умолчанию: null.
+ * Также можно пробросить ng-content, тогда value не будет выводиться
+ *
+ * [icon]: IconType - Иконка элемента - необязательный,
+ * по умолчанию: null
+ *
+ * [isDestructive]: boolean - Флаг деструктивного действия -
+ * необязательный, по умолчанию: false
+ *
+ * [isDisabled]: boolean - Флаг блокировки элемента - необязательный,
+ * по умолчанию: false
+ *
+ * [selected]: boolean - Флаг на выбранный элемент - необязательный,
+ * по умолчанию: false
+ *
+ * (valueEvent): T | string | null - Событие выбора элемента -
+ * обязательный
+ *
+ * <ss-lib-dropdown-item
+ *   [label]="'Пункт меню'"
+ *   [value]="item"
+ *   [icon]="IconType.SomeIcon"
+ *   [isDestructive]="false"
+ *   [isDisabled]="false"
+ *   (valueEvent)="onSelect($event)"
+ * ></ss-lib-dropdown-item>
+ * ```
+ */
+@Component({
+	selector: 'ss-lib-dropdown-item',
+	standalone: true,
+	imports: [IconComponent, TextComponent, NgTemplateOutlet],
+	templateUrl: './dropdown-item.component.html',
+	styleUrl: './dropdown-item.component.scss',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class DropdownItemComponent<
+	T extends IDictionaryItemDto = IDictionaryItemDto,
+> {
+	public readonly elementRef = inject(ElementRef);
+
+	public itemContent = viewChild<TemplateRef<unknown>>('content');
+	public iconComponents = contentChildren(IconComponent, {
+		descendants: true,
+	});
+
+	public textComponents = contentChildren(TextComponent, {
+		descendants: true,
+	});
+
+	public readonly label = input<string>('');
+	public readonly value = input<T | string | null>(null);
+	public readonly icon = input<IconType | null>(null);
+	public readonly isDestructive = input<boolean>(false);
+	public readonly isDisabled = input<boolean>(false);
+	public readonly selected = input<boolean>(false);
+	public readonly valueEvent = output<T | string | null>();
+	public readonly state = signal<StateTypes>(StateTypes.Default);
+
+	public readonly itemText = computed(() => {
+		const val = this.value();
+
+		if (typeof val === 'string') {
+			return val;
+		}
+
+		return val ? val.name : this.label() || '';
+	});
+
+	public readonly colorsConfig = computed((): IColorsConfig => {
+		const state = this.state();
+		const isDisabled = this.isDisabled();
+		const isDestructive = this.isDestructive();
+
+		if (isDisabled) {
+			return {
+				icon: Colors.IconDisabled,
+				text: Colors.TextDisabled,
+			};
+		}
+
+		if (state === StateTypes.Hover) {
+			return {
+				icon: Colors.IconActionHover2,
+				text: Colors.TextActionHover2,
+			};
+		}
+
+		if (isDestructive) {
+			return state === StateTypes.Default
+				? {
+						icon: Colors.IconAction2,
+						text: Colors.TextAction2,
+					}
+				: {
+						icon: Colors.IconError,
+						text: Colors.TextError,
+					};
+		}
+
+		return {
+			icon: Colors.IconAction2,
+			text: Colors.TextAction2,
+		};
+	});
+
+	protected readonly TextType = TextType;
+	protected readonly TextWeight = TextWeight;
+	protected readonly StateTypes = StateTypes;
+	protected readonly Colors = Colors;
+	protected readonly IconType = IconType;
+
+	constructor() {
+		effect(() => {
+			const color = this.colorsConfig();
+
+			this.iconComponents().forEach((icon) =>
+				icon.internalColor.set(color.icon!),
+			);
+
+			this.textComponents().forEach((text) =>
+				text.internalColor.set(color.text!),
+			);
+		});
+	}
+
+	@HostListener('click')
+	public togglePopover(): void {
+		this.valueEvent.emit(this.value());
+	}
+
+	public checkFocus(event: FocusEvent): void {
+		const target = event.target as HTMLElement;
+
+		if (target.matches(':focus-visible')) {
+			this.state.set(StateTypes.Focused);
+		}
+	}
+}

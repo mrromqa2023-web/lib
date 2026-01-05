@@ -1,0 +1,7 @@
+<div
+	class="ss-lib-popover"
+	[@openPanel]="state"
+	(click)="preventClick($event)"
+>
+	<ng-container [ngComponentOutlet]="component"></ng-container>
+</div>

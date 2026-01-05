@@ -1,0 +1,64 @@
+:host {
+	background-color: var(--surface-primary);
+}
+
+.sidebar {
+	border-right: 1px solid var(--border-primary);
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	height: 100%;
+	width: 0;
+	transition: 0.5s;
+
+	&--mini {
+		width: 64px;
+	}
+
+	&--close {
+		width: 0;
+	}
+
+	&--full {
+		width: 240px;
+	}
+
+	&__top-menu {
+		display: flex;
+		flex-direction: column;
+		gap: 2px;
+		padding: 16px 12px;
+	}
+
+	&__bottom-menu {
+		padding-bottom: 8px;
+
+		&_divider {
+			padding: 8px 20px;
+		}
+	}
+
+	&__bottom-menu-block {
+		display: flex;
+		height: 40px;
+		align-items: center;
+		justify-content: start;
+		flex-wrap: nowrap;
+		text-wrap: nowrap;
+		margin: 0 12px;
+		cursor: pointer;
+		overflow: hidden;
+		white-space: nowrap;
+
+		&_icon-button {
+			padding: 0 4px;
+			max-width: 20px;
+			transition: max-width 1s ease;
+			overflow: hidden;
+		}
+
+		&_icon-button.expanded {
+			max-width: 100%;
+		}
+	}
+}

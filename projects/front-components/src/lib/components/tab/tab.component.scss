@@ -1,0 +1,49 @@
+:host {
+	position: relative;
+
+	&:not(:has(.ss-lib-tab--disabled)) {
+		cursor: pointer;
+	}
+}
+
+.ss-lib-tab {
+	display: flex;
+	padding: 0 4px;
+	align-items: flex-start;
+	justify-content: center;
+	border-radius: 2px;
+
+	&__tab {
+		display: flex;
+		align-items: center;
+		flex-wrap: nowrap;
+		gap: 6px;
+	}
+
+	&__label {
+		display: flex;
+		align-items: center;
+		gap: 4px;
+	}
+
+	&--active:after {
+		content: '';
+		position: absolute;
+		bottom: -1px;
+		left: 0;
+		right: 0;
+		height: 2px;
+		background: var(--icon-information);
+		border-radius: var(--border-radius-round);
+	}
+
+	&:not(&--disabled):focus-visible {
+		height: 100%;
+		outline: none;
+		box-shadow: var(--focus-rings-focus-ring);
+	}
+
+	&--disabled:focus-visible {
+		outline: none;
+	}
+}

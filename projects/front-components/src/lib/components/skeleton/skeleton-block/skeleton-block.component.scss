@@ -1,0 +1,25 @@
+:host {
+	background-color: var(--border-primary);
+	overflow: hidden;
+	position: relative;
+
+	&:after {
+		display: block;
+		content: '';
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		background: var(--border-primary);
+		animation: shimmer 800ms ease-in-out infinite alternate;
+		animation-delay: 200ms;
+	}
+}
+
+@keyframes shimmer {
+	0% {
+		background-color: var(--border-primary);
+	}
+	100% {
+		background-color: var(--border-secondary);
+	}
+}

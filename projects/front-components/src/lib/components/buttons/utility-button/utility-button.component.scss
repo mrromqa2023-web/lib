@@ -1,0 +1,19 @@
+button.custom-button.type-utility {
+	padding: 2px;
+	background: transparent;
+	border-radius: var(--border-radius-xs);
+}
+
+.hovered button.custom-button.type-utility,
+button.custom-button:hover.type-utility {
+	background-color: var(--surface-action-hover-2);
+}
+
+button.custom-button:active.type-utility {
+	background-color: var(--surface-action-pressed-2);
+}
+
+button.custom-button:focus-visible.type-utility {
+	outline: none;
+	box-shadow: var(--focus-rings-focus-ring);
+}

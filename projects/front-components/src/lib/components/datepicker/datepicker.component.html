@@ -1,0 +1,18 @@
+<ss-lib-input
+	#dateInput
+	[size]="size()"
+	[formControl]="datepickerCtrl"
+	[type]="InputType.Date"
+	[min]="firstNativeDay"
+	[max]="lastNativeDay"
+	[popoverTriggerFor]="calendar"
+	[popoverTriggerDisabled]="datepickerCtrl.disabled"
+/>
+
+<ss-lib-datepicker-calendar
+	#calendar
+	[selectedDate]="selectedDate()"
+	[min]="min()"
+	[max]="max()"
+	(value)="onDateSelected($event)"
+></ss-lib-datepicker-calendar>

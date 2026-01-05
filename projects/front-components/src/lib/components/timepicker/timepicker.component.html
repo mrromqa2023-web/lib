@@ -1,0 +1,22 @@
+<ss-lib-input
+	#timeInput
+	[type]="InputType.Time"
+	[formControl]="timepickerCtrl"
+	[popoverTriggerFor]="dropdownTime"
+	[popoverTriggerDisabled]="timepickerCtrl.disabled"
+	(click)="scrollToTime(timepickerCtrl.value)"
+>
+	<ss-lib-dropdown-list
+		#dropdownTime
+		[width]="'114px'"
+		[height]="'274px'"
+	>
+		@for (time of timeIntervals; track $index) {
+			<ss-lib-dropdown-item
+				#timeRow
+				[value]="time"
+				(click)="selectTime(time)"
+			/>
+		}
+	</ss-lib-dropdown-list>
+</ss-lib-input>

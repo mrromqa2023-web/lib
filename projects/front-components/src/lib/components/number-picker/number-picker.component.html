@@ -1,0 +1,52 @@
+<div class="number-picker-wrapper">
+	<div class="number-picker">
+		<ss-lib-button
+			class="number-picker__number-indicator indicator-start"
+			[type]="ButtonType.Secondary"
+			[size]="sizeConfig().buttonSize"
+			[icon]="IconType.Minus"
+			[iconPosition]="IconPosition.OnlyIcon"
+			[disabled]="
+				isDisabled() ||
+				(numberPickerCtrl.value &&
+					min() &&
+					numberPickerCtrl.value <= min()!)
+			"
+			(click)="
+				!isDisabled() && changeNumberValueByStep(Direction.Previous)
+			"
+		/>
+
+		<div
+			class="number-picker__input-field"
+			(focusout)="onCheckInputValueOnFocusout($event)"
+		>
+			<ss-lib-form-field [size]="ExtraSize.lg">
+				<ss-lib-input
+					fieldCtrl
+					[formControl]="numberPickerCtrl"
+					[type]="InputType.Number"
+					[min]="min()"
+					[max]="max()"
+					[align]="Align.Center"
+					[size]="sizeConfig().inputSize"
+				/>
+			</ss-lib-form-field>
+		</div>
+
+		<ss-lib-button
+			class="number-picker__number-indicator indicator-end"
+			[type]="ButtonType.Secondary"
+			[size]="sizeConfig().buttonSize"
+			[icon]="IconType.Plus"
+			[iconPosition]="IconPosition.OnlyIcon"
+			[disabled]="
+				isDisabled() ||
+				(numberPickerCtrl.value &&
+					max() &&
+					numberPickerCtrl.value >= max()!)
+			"
+			(click)="!isDisabled() && changeNumberValueByStep(Direction.Next)"
+		/>
+	</div>
+</div>
